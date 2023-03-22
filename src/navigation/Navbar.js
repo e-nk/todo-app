@@ -14,22 +14,26 @@ function Navbar(){
     return(
         <Router>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div>
-                <ul class="navbar-nav me-auto mb-2 fs-5">
-                    <li className="logo nav-header link-dark">
+            <div class="container-fluid">
+                <ul class="navbar-nav me-auto mb-3 fs-3">
+                    <li className="logo nav-header navbar-brand ">
+                    <i class="ri-home-3-line"></i>
                     <Link to="/">Home</Link>
-                        
                     </li>
-                    <li className="logo nav-header link-dark">
+                    <li class="nav-item ms-3 fs-5 navbar-brand">
+                    <i class="ri-file-list-3-line"></i>
                     <Link to="/Todos">My-Todos</Link>
                     </li>
-                    <li className="logo nav-header link-dark">
+                    <li class="nav-item ms-3 fs-5 navbar-brand">
+                    <i class="ri-menu-add-line"></i>
                     <Link to="/Add-Todos">Add-Todos</Link>
                     </li>
-                    <li className="logo nav-header link-dark">
+                    <li class="nav-item ms-3 fs-5 navbar-brand">
+                    <i class="ri-edit-2-fill"></i>
                     <Link to="/Update">Update</Link>
                     </li>
-                    <li className="logo nav-header link-dark">
+                    <li class="nav-item ms-3 fs-5 navbar-brand">
+                    <i class="ri-delete-bin-5-line"></i>
                     <Link to="/Delete">Delete</Link>
                     </li>
 
