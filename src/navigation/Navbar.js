@@ -6,8 +6,9 @@ import Todo from "../pages/Todos";
 import AddTodo from "../pages/AddTodo";
 import UpdateTodo from "../pages/UpdateTodo";
 import DeleteTodo from "../pages/DeleteTodo";
-import Auth from "../components/auth/Login";
-
+// import Auth from "../components/auth/Login";
+import Login from "../components/auth/Login";
+import Signup from "../components/auth/Signup";
 import './navbar.css'
 
 function Navbar() {
@@ -55,7 +56,7 @@ function Navbar() {
                 Logout
               </button>
             ) : (
-              <Link className="nav-link active" aria-current="page" to="/Auth">
+              <Link className="nav-link active" aria-current="page" to="/login">
                 Login/Signup
               </Link>
             )}
@@ -69,10 +70,8 @@ function Navbar() {
         <Route path="/Add-Todos" element={<AddTodo />} />
         <Route path="/Update" element={<UpdateTodo />} />
         <Route path="/Delete" element={<DeleteTodo />} />
-        <Route
-          path="/Auth"
-          element={<Auth onLoginSuccess={handleLogin} />}
-        />
+        <Route path="/login"   element={<Login onLoginSuccess={handleLogin} />}/>
+        <Route path="/register" element={<Signup />} />
       </Routes>
       {/* <div className="footer">
         <h4>&copy; 2023 Task Train. All rights reserved.</h4>
