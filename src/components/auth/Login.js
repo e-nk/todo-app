@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './login.css'
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -33,43 +34,57 @@ const Login = ({ history }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label htmlFor="email">Email address</label>
-        <input
-          type="email"
-          className="form-control"
-          id="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
+    <body class="text-center">
+        <div class="container">
+            <form class="form-signin" onSubmit={handleSubmit}>
 
-      <div className="form-group">
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          className="form-control"
-          id="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
+            <div class="bg-login">
+                <p class="icon"></p><i class="fas fa-user-alt-slash"></i><br></br>
+                
+                <label htmlFor="email" class="sr-only">Email or Username</label>
+                <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Enter email/username"
+                required autofocus
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                />
+                <label htmlFor="password" class="sr-only">Password</label>
+                <input
+                type="password"
+                class="form-control"
+                id="password"
+                placeholder="Password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                />
+            </div>
+            <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck1"></input>
+            <label class="custom-control-label" for="customCheck1">Remember me</label>
+            </div><br></br>
+            <button type="submit" className="btn btn-primary">Login</button>
+            <br></br>
+            <p><strong>Or</strong></p>
 
-      <button type="submit" className="btn btn-primary">
-        Login
-      </button>
+            <p>Don't have an account?</p>
 
-      <button
-        type="button"
-        className="btn btn-link"
-        onClick={() => navigate("/register")}
-      >
-        Register
-      </button>
-    </form>
+            <div class="social-media">
+
+                <ul>
+
+                <li><button type="button" className="btn btn-primary"onClick={() => navigate("/register")}>Register</button></li>
+
+                </ul>
+
+            </div>
+            
+            </form>
+        </div>
+    </body>
   );
 };
 
