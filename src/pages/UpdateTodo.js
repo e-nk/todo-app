@@ -9,7 +9,7 @@ function UpdateTodo() {
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const response = await fetch('/api/todos');
+        const response = await fetch('https://api.npoint.io/84e0f523a008e3f36143');
         const data = await response.json();
         setTodos(data);
       } catch (error) {
@@ -27,7 +27,7 @@ function UpdateTodo() {
 
   const handleTodoUpdate = async () => {
     try {
-      const response = await fetch(`https://api.npoint.io/84e0f523a008e3f36143/${selectedTodo.id}`, {
+      const response = await fetch(`https://api.npoint.io/84e0f523a008e3f36143${selectedTodo.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -50,6 +50,7 @@ function UpdateTodo() {
       <div className="row">
         <div className="col-md-4">
           <h3 className="mb-3">Existing Tasks</h3>
+          <p className="mb-3">(Click Task To Edit)</p>
           <ul className="list-group">
             {todos.map((todo) => (
               <li
