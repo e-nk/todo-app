@@ -9,7 +9,8 @@ import DeleteTodo from "../pages/DeleteTodo";
 // import Auth from "../components/auth/Login";
 import Login from "../components/auth/Login";
 import Signup from "../components/auth/Signup";
-import './navbar.css'
+
+import './navbar.css';
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

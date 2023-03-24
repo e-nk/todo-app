@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
-const Signup = ({ history }) => {
+const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -22,7 +24,7 @@ const Signup = ({ history }) => {
 
       if (response.ok) {
         localStorage.setItem("token", data.token);
-        history.push("/dashboard");
+        navigate("/dashboard");
       } else {
         console.log(data.message);
       }
@@ -32,45 +34,55 @@ const Signup = ({ history }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="formBasicUsername">
-        <Form.Label>Username</Form.Label>
-        <Form.Control
+    <form className="col-sm-8 col-md-6 mx-auto" onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label htmlFor="username">Username</label>
+        <input
           type="text"
+          className="form-control"
+          id="username"
           placeholder="Enter username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-      </Form.Group>
+      </div>
 
-      <Form.Group controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control
+      <div className="form-group">
+        <label htmlFor="email">Email address</label>
+        <input
           type="email"
+          className="form-control"
+          id="email"
           placeholder="Enter email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-      </Form.Group>
+      </div>
 
-      <Form.Group controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
+      <div className="form-group">
+        <label htmlFor="password">Password</label>
+        <input
           type="password"
+          className="form-control"
+          id="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-      </Form.Group>
+      </div>
 
-      <Button variant="primary" type="submit">
+      <button type="submit" className="btn btn-primary">
         Signup
-      </Button>
+      </button>
 
-      <Button variant="link" onClick={() => history.push("/login")}>
+      <button
+        type="button"
+        className="btn btn-link"
+        onClick={() => navigate("/login")}
+      >
         Go to Login
-      </Button>
-    </Form>
+      </button>
+    </form>
   );
 };
 

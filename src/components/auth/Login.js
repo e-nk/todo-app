@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -31,35 +33,43 @@ const Login = ({ history }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control
+    <form onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label htmlFor="email">Email address</label>
+        <input
           type="email"
+          className="form-control"
+          id="email"
           placeholder="Enter email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-      </Form.Group>
+      </div>
 
-      <Form.Group controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
+      <div className="form-group">
+        <label htmlFor="password">Password</label>
+        <input
           type="password"
+          className="form-control"
+          id="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-      </Form.Group>
+      </div>
 
-      <Button variant="primary" type="submit">
+      <button type="submit" className="btn btn-primary">
         Login
-      </Button>
+      </button>
 
-      <Button variant="link" onClick={() => history.push("/register")}>
-        Go to Register
-      </Button>
-    </Form>
+      <button
+        type="button"
+        className="btn btn-link"
+        onClick={() => navigate("/register")}
+      >
+        Register
+      </button>
+    </form>
   );
 };
 
